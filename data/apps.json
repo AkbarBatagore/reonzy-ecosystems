@@ -1,0 +1,100 @@
+{
+  "apps": [
+    {
+      "id": 1,
+      "title": "Image Editor Pro",
+      "description": "Edit dan manipulasi gambar dengan fitur advanced",
+      "type": "IMG-EDITOR",
+      "icon": "apps-1.png",
+      "url": "#"
+    },
+    {
+      "id": 2,
+      "title": "Video Converter Ultra",
+      "description": "Konversi video ke berbagai format dengan kualitas terbaik",
+      "type": "VID-CONVERT",
+      "icon": "apps-2.png",
+      "url": "#"
+    },
+    {
+      "id": 3,
+      "title": "Download Manager Pro",
+      "description": "Kelola unduhan dengan fitur advanced dan akselerator",
+      "type": "DOWNLOADER",
+      "icon": "apps-3.png",
+      "url": "#"
+    },
+    {
+      "id": 4,
+      "title": "Image Converter",
+      "description": "Konversi gambar dengan kualitas tinggi ke berbagai format",
+      "type": "IMG-CONVERT",
+      "icon": "apps-4.png",
+      "url": "#"
+    },
+    {
+      "id": 5,
+      "title": "Video Editor Professional",
+      "description": "Edit video profesional dengan timeline, efek, dan transisi",
+      "type": "VID-EDITOR",
+      "icon": "apps-5.png",
+      "url": "#"
+    },
+    {
+      "id": 6,
+      "title": "PDF Tools Suite",
+      "description": "Manipulasi file PDF: merge, split, compress, konversi",
+      "type": "PDF-XLCX-MORE",
+      "icon": "apps-6.png",
+      "url": "#"
+    },
+    {
+      "id": 7,
+      "title": "Universal Converter",
+      "description": "Konversi berbagai format file: document, media, dan lainnya",
+      "type": "CONVERT",
+      "icon": "apps-7.png",
+      "url": "#"
+    },
+    {
+      "id": 8,
+      "title": "Batch Image Editor",
+      "description": "Edit batch gambar sekaligus dengan fitur resize, watermark",
+      "type": "IMG-EDITOR",
+      "icon": "apps-8.png",
+      "url": "#"
+    },
+    {
+      "id": 9,
+      "title": "Audio Downloader",
+      "description": "Download musik dari berbagai platform streaming",
+      "type": "DOWNLOADER",
+      "icon": "apps-9.png",
+      "url": "#"
+    },
+    {
+      "id": 10,
+      "title": "Compress Images",
+      "description": "Kompres gambar tanpa mengurangi kualitas signifikan",
+      "type": "IMG-CONVERT",
+      "icon": "apps-10.png",
+      "url": "#"
+    },
+    {
+      "id": 11,
+      "title": "Video Trimmer",
+      "description": "Potong dan edit video dengan interface yang mudah",
+      "type": "VID-EDITOR",
+      "icon": "apps-11.png",
+      "url": "#"
+    },
+    {
+      "id": 12,
+      "title": "Excel Converter",
+      "description": "Konversi dan manipulasi file Excel dengan fitur lengkap",
+      "type": "PDF-XLCX-MORE",
+      "icon": "apps-12.png",
+      "url": "#"
+    }
+  ]
+}

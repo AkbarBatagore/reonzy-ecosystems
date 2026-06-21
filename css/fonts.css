@@ -1,0 +1,62 @@
+/* 
+ * Custom Fonts for RE-ONZY ECOSYSTEMS
+ * From DaFont.com
+ */
+
+/* Import Game of Squids from DaFont */
+@font-face {
+    font-family: 'Game of Squids';
+    src: url('https://www.dafont.com/game-of-squids.font');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Import Roboto Regular from DaFont */
+@font-face {
+    font-family: 'Roboto';
+    src: url('https://www.dafont.com/roboto.font');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Typography Utility Classes */
+.font-primary {
+    font-family: 'Roboto', sans-serif;
+}
+
+.font-secondary {
+    font-family: 'Game of Squids', 'Fredoka', sans-serif;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-semi-bold {
+    font-weight: 600;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-regular {
+    font-weight: 400;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}

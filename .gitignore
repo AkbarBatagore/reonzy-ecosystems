@@ -1,0 +1,47 @@
+# RE-ONZY ECOSYSTEMS .gitignore
+
+# Node modules
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+*.min.js
+*.min.css
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# System files
+.sass-cache/
+*.pem
+*.key
+
+# Temporary files
+temp/
+tmp/
+*.temp
+
+# But DO include these important folders (even if empty)
+# This allows them to be part of the repo structure
+!img/slideshow/.gitkeep
+!img/icon-apps/.gitkeep

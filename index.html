@@ -1,11 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reonzy Ecosystems</title>
+    <title>RE-ONZY ECOSYSTEMS - Tools & Applications Hub</title>
+    
+    <!-- Custom Fonts from DaFont -->
+    <link rel="stylesheet" href="css/fonts.css">
+    
+    <!-- Custom Fonts & Styles -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Profile Circle -->
+            <div class="profile-circle" id="profileCircle" title="Click untuk membuka GitHub profile">
+                <img id="githubProfileImg" src="" alt="Profile">
+            </div>
+            
+            <!-- Logo/Title -->
+            <div class="logo">
+                <h1>RE-ONZY ECOSYSTEMS</h1>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="SEARCH..."
+                    maxlength="50"
+                >
+                <button id="searchBtn" class="search-btn" title="Search">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-page="home">HOME</a>
+                <a href="#" class="nav-item" data-page="list">LIST</a>
+                <a href="#" class="nav-item" data-page="workstation">WORKSTATION</a>
+            </nav>
+            
+            <!-- Hamburger Menu -->
+            <button class="hamburger" id="hamburger" title="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <!-- LEFT SIDEBAR - FILTERS -->
+        <aside class="sidebar-left">
+            <h3 class="sidebar-title">FILTER BY TYPE</h3>
+            <ul class="filter-list" id="filterList">
+                <li><a href="#" class="filter-btn active" data-filter="ALL">ALL</a></li>
+                <li><a href="#" class="filter-btn" data-filter="DOWNLOADER">DOWNLOADER</a></li>
+                <li><a href="#" class="filter-btn" data-filter="IMG-EDITOR">IMG-EDITOR</a></li>
+                <li><a href="#" class="filter-btn" data-filter="IMG-CONVERT">IMG-CONVERT</a></li>
+                <li><a href="#" class="filter-btn" data-filter="VID-EDITOR">VID-EDITOR</a></li>
+                <li><a href="#" class="filter-btn" data-filter="VID-CONVERT">VID-CONVERT</a></li>
+                <li><a href="#" class="filter-btn" data-filter="PDF-XLCX-MORE">PDF-XLCX-MORE</a></li>
+                <li><a href="#" class="filter-btn" data-filter="CONVERT">CONVERT</a></li>
+            </ul>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="main-content">
+            <!-- SLIDESHOW SECTION -->
+            <div class="slideshow-container" id="slideshowContainer">
+                <div class="slideshow-wrapper">
+                    <div class="slideshow" id="slideshow">
+                        <img id="slideshowImage" src="img/slideshow/slideshow-1.png" alt="Slideshow" class="slideshow-image">
+                    </div>
+                    <button class="slide-btn prev-btn" id="prevBtn" title="Previous">‹</button>
+                    <button class="slide-btn next-btn" id="nextBtn" title="Next">›</button>
+                </div>
+                <div class="slideshow-indicators" id="slideshowIndicators"></div>
+            </div>
+
+            <!-- APPLICATIONS GRID -->
+            <div class="apps-container" id="appsContainer">
+                <!-- App cards akan di-generate oleh JavaScript dari apps.json -->
+            </div>
+        </main>
+
+        <!-- RIGHT SIDEBAR - SCROLL -->
+        <aside class="sidebar-right">
+            <div class="scroll-indicator"></div>
+        </aside>
+    </div>
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- MOBILE SIDEBAR MENU (untuk mobile view) -->
+    <aside class="sidebar-mobile" id="sidebarMobile">
+        <button class="close-btn" id="closeSidebarBtn" title="Close">✕</button>
+        <h3>MENU</h3>
+        <ul class="mobile-menu">
+            <li><a href="#" class="nav-item" data-page="home">HOME</a></li>
+            <li><a href="#" class="nav-item" data-page="list">LIST</a></li>
+            <li><a href="#" class="nav-item" data-page="workstation">WORKSTATION</a></li>
+        </ul>
+    </aside>
+
+    <!-- JavaScript Files -->
+    <script src="js/script.js"></script>
 </body>
 </html>
