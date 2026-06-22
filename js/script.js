@@ -57,7 +57,7 @@ async function initGitHubProfile() {
 document.addEventListener('DOMContentLoaded', () => {
     const profileCircle = document.getElementById('profileCircle');
     profileCircle.addEventListener('click', () => {
-        window.open('https://github.com/AkbarBatagore', '_blank');
+        window.(open)('https://github.com/AkbarBatagore', '_blank');
     });
 });
 
