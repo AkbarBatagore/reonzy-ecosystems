@@ -1,0 +1,1 @@
+buatkan saya web dasar dengan navbar polos dan searchbar, dan buat tulisan di kiri navbar "Reonzy Ecosystems" buat semua bagian beranimasi seperti jelly dan buat gaya tampilan nav bar dan lain lain nya seperti liquid glass iphone

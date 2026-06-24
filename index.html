@@ -1,33 +1,468 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reonzy Ecosystems</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <title>Liquid Glass Navbar</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --glass-bg: rgba(255,255,255,0.12);
+      --glass-border: rgba(255,255,255,0.28);
+      --glass-blur: blur(24px) saturate(180%) brightness(1.08);
+      --shadow: 0 8px 32px rgba(0,0,0,0.18), 0 1.5px 0 rgba(255,255,255,0.35) inset;
+      --active-bg: rgba(255,255,255,0.22);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: #0a0a0f;
+    }
+
+    /* ── ANIMATED BACKGROUND ── */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(135deg, #1a0533 0%, #0d1f5c 40%, #0a2e1a 100%);
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.55;
+      animation: float 12s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: radial-gradient(circle, #a855f7, #6366f1); top: -10%; left: -10%; animation-delay: 0s; }
+    .orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, #06b6d4, #3b82f6); top: 50%; right: -10%; animation-delay: -4s; }
+    .orb-3 { width: 350px; height: 350px; background: radial-gradient(circle, #10b981, #0891b2); bottom: -10%; left: 30%; animation-delay: -8s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33%       { transform: translate(40px, -30px) scale(1.06); }
+      66%       { transform: translate(-25px, 25px) scale(0.94); }
+    }
+
+    /* ── PAGE CONTENT ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      padding: 100px 24px 120px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 300;
+      color: white;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero-title span {
+      font-weight: 600;
+      background: linear-gradient(90deg, #a78bfa, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
+      max-width: 420px;
+      font-weight: 300;
+    }
+
+    .cards-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+
+    .content-card {
+      flex: 1;
+      min-width: 180px;
+      padding: 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .content-card .icon {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .content-card h3 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .content-card p {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ══════════════════════════════════
+       TOP NAVBAR — iPhone island style
+    ══════════════════════════════════ */
+    .navbar {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      width: min(680px, calc(100vw - 32px));
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-radius: 999px;
+
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow);
+
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* Subtle specular highlight di atas (efek kaca nyata) */
+    .navbar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 12px; right: 12px;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent,
+        rgba(255,255,255,0.5) 30%,
+        rgba(255,255,255,0.5) 70%,
+        transparent);
+      border-radius: 999px;
+    }
+
+    /* Glow bawah saat scroll */
+    .navbar.scrolled {
+      background: rgba(255,255,255,0.09);
+      box-shadow:
+        0 12px 48px rgba(0,0,0,0.35),
+        0 1.5px 0 rgba(255,255,255,0.3) inset,
+        0 0 0 1px rgba(255,255,255,0.12);
+    }
+
+    /* Logo */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #a78bfa, #38bdf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+
+    .logo-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: white;
+      letter-spacing: -0.02em;
+    }
+
+    /* Nav links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: rgba(255,255,255,0.95);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .nav-links a.active {
+      color: white;
+      background: var(--active-bg);
+      font-weight: 500;
+      box-shadow:
+        0 2px 8px rgba(0,0,0,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.3),
+        inset 0 -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .nav-links .icon { font-size: 0.85rem; }
+
+    /* CTA button */
+    .nav-cta {
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: white;
+      background: linear-gradient(135deg, rgba(167,139,250,0.7), rgba(56,189,248,0.7));
+      border: 1px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      backdrop-filter: blur(8px);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-cta:hover {
+      background: linear-gradient(135deg, rgba(167,139,250,0.9), rgba(56,189,248,0.9));
+      transform: scale(1.03);
+    }
+
+    /* ══════════════════════════════════
+       BOTTOM TAB BAR — iPhone style
+    ══════════════════════════════════ */
+    .tabbar {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 16px;
+      border-radius: 999px;
+
+      background: rgba(20, 20, 30, 0.55);
+      backdrop-filter: blur(28px) saturate(200%);
+      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow:
+        0 8px 40px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    .tabbar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 16px; right: 16px;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent,
+        rgba(255,255,255,0.4) 50%,
+        transparent);
+    }
+
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+    }
+
+    .tab-item:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .tab-item.active {
+      background: rgba(255,255,255,0.14);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.25),
+        0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .tab-icon {
+      font-size: 1.3rem;
+      transition: transform 0.25s ease;
+    }
+
+    .tab-item.active .tab-icon {
+      transform: scale(1.1);
+    }
+
+    .tab-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.04em;
+      transition: color 0.25s;
+    }
+
+    .tab-item.active .tab-label {
+      color: white;
+    }
+
+    /* Notif badge */
+    .badge {
+      position: absolute;
+      top: 4px;
+      right: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #f43f5e;
+      border: 1.5px solid rgba(20,20,30,0.8);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 500px) {
+      .nav-links { display: none; }
+      .logo-text { display: none; }
+      .navbar { padding: 10px 14px; }
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <a class="logo" href="#">Reonzy Ecosystems</a>
 
-      <button id="toggle-btn" class="toggle-btn" aria-label="Toggle navigation">☰</button>
+  <div class="bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
 
-      <ul id="nav-links" class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+  <!-- TOP NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="#" class="nav-logo">
+      <div class="logo-dot">✦</div>
+      <span class="logo-text">Glassy</span>
+    </a>
 
-      <div class="search-bar">
-        <input id="search-input" type="text" placeholder="Search..." />
-        <button id="search-btn" type="button">Search</button>
-      </div>
-    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="active"><span class="icon">⌂</span> Home</a></li>
+      <li><a href="#"><span class="icon">◈</span> Explore</a></li>
+      <li><a href="#"><span class="icon">◎</span> Studio</a></li>
+      <li><a href="#"><span class="icon">◇</span> About</a></li>
+    </ul>
+
+    <a href="#" class="nav-cta">Get started</a>
   </nav>
 
+  <!-- PAGE CONTENT -->
+  <div class="page">
+    <p class="hero-label">Design system · v2.0</p>
+    <h1 class="hero-title">Build with<br><span>liquid glass</span><br>clarity</h1>
+    <p class="hero-sub">UI yang terinspirasi dari iOS — transparan, responsif, dan elegan di atas background apapun.</p>
 
-  <script src="js/script.js"></script>
+    <div class="cards-row">
+      <div class="content-card">
+        <span class="icon">🪟</span>
+        <h3>Glassmorphism</h3>
+        <p>backdrop-filter blur dengan border transparan untuk efek kaca nyata.</p>
+      </div>
+      <div class="content-card">
+        <span class="icon">💧</span>
+        <h3>Liquid Shape</h3>
+        <p>Animasi border-radius yang memberi kesan material cair dan organik.</p>
+      </div>
+      <div class="content-card">
+        <span class="icon">✦</span>
+        <h3>Specular Light</h3>
+        <p>Highlight inset di bagian atas mensimulasikan pantulan cahaya kaca asli.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM TAB BAR -->
+  <div class="tabbar">
+    <div class="tab-item active" onclick="setTab(this)">
+      <div class="tab-icon">⌂</div>
+      <div class="tab-label">Home</div>
+    </div>
+    <div class="tab-item" onclick="setTab(this)">
+      <div class="tab-icon">◈</div>
+      <div class="tab-label">Explore</div>
+      <div class="badge"></div>
+    </div>
+    <div class="tab-item" onclick="setTab(this)">
+      <div class="tab-icon">◎</div>
+      <div class="tab-label">Create</div>
+    </div>
+    <div class="tab-item" onclick="setTab(this)">
+      <div class="tab-icon">♡</div>
+      <div class="tab-label">Saved</div>
+    </div>
+    <div class="tab-item" onclick="setTab(this)">
+      <div class="tab-icon">◉</div>
+      <div class="tab-label">Profile</div>
+    </div>
+  </div>
+
+  <script>
+    // Tab switching
+    function setTab(el) {
+      document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Nav link active
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelectorAll('.nav-links a').forEach(x => x.classList.remove('active'));
+        a.classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
